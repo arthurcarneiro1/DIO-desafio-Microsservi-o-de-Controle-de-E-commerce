@@ -1,32 +1,46 @@
-# Microservices Spring Boot Challenge - Starter Project
 
-This repository contains a starter template for the DIO microservices challenge with two simple services:
+---
 
-- **warehouse** (port 8081): exposes a synchronous HTTP endpoint to query stock.
-- **storefront** (port 8080): calls warehouse synchronously and sends asynchronous messages to RabbitMQ on checkout.
+# **Desafio de Microsserviços Spring Boot – Projeto Inicial**
 
-## How to run (locally with Docker)
+Este repositório contém um template inicial para o desafio de microsserviços da DIO com dois serviços simples:
 
-1. Build and run:
+* **warehouse** (porta 8081): expõe um endpoint HTTP síncrono para consultar estoque.
+* **storefront** (porta 8080): chama o warehouse de forma síncrona e envia mensagens assíncronas para o RabbitMQ no checkout.
+
+## **Como executar (localmente com Docker)**
+
+1. Build e execução:
+
    ```
    docker-compose up --build
    ```
 
-2. Check RabbitMQ management UI at: http://localhost:15672 (guest/guest)
+2. Acesse a interface de gerenciamento do RabbitMQ em:
+   [http://localhost:15672](http://localhost:15672) (usuário/senha: guest/guest)
 
-3. Example requests:
-   - Check stock: `GET http://localhost:8080/api/storefront/stock/ABC123`
-   - Checkout: `POST http://localhost:8080/api/storefront/checkout` with JSON body:
+3. Exemplos de requisições:
+
+   * Consultar estoque:
+     `GET http://localhost:8080/api/storefront/stock/ABC123`
+   * Checkout:
+     `POST http://localhost:8080/api/storefront/checkout`
+     Corpo JSON:
+
      ```json
      { "sku": "ABC123", "quantity": 2 }
      ```
 
-## What to improve / next steps (suggestions)
-- Replace static/pseudo-random stock with a real DB (Postgres) and Spring Data repositories.
-- Add DTOs, validation and exception handling.
-- Implement consumers in warehouse to process `stock.updated` messages and decrement stock.
-- Add tests (unit/integration) and CI (GitHub Actions).
-- Add proper logging and observability (Zipkin / Sleuth, Prometheus exporters).
+## **O que melhorar / próximos passos (sugestões)**
 
-## Deliverable
-This is a minimal starter to help you iterate quickly. Fork, improve and document your decisions in the repository README and submit the repo link in DIO.
+* Substituir o estoque estático/pseudo-aleatório por um banco de dados real (Postgres) usando Spring Data.
+* Adicionar DTOs, validação e tratamento de exceções.
+* Implementar consumidores no warehouse para processar mensagens `stock.updated` e decrementar o estoque.
+* Adicionar testes (unitários e de integração) e CI (GitHub Actions).
+* Adicionar logs apropriados e observabilidade (Zipkin / Sleuth, Prometheus exporters).
+
+
+
+---
+
+
